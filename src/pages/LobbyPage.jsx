@@ -42,6 +42,13 @@ export default function LobbyPage() {
         switch (event.eventType) {
             case 'PLAYER_JOINED':
                 refetch();
+                const newPlayer = event.data;
+                if (newPlayer && newPlayer.id !== currentPlayerId) {
+                    dispatch(addToast({
+                        message: `${newPlayer.name} joined the game! 🤝`,
+                        type: 'info'
+                    }));
+                }
                 break;
             case 'GAME_STARTED':
                 dispatch(navigateTo('game'));
