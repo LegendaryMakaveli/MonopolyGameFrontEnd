@@ -107,22 +107,22 @@ export default function GameBoard() {
     return (
         <div className="min-h-screen py-6 px-6 max-w-7xl mx-auto flex flex-col gap-6">
             {/* Top Bar */}
-            <nav className="glass p-4 rounded-2xl flex items-center justify-between animate-fade-in-down border-white/10">
-                <div className="flex items-center gap-4">
-                    <button className="btn btn-secondary btn-sm" onClick={() => dispatch(navigateTo('landing'))}>
+            <nav className="glass p-3 md:p-4 rounded-2xl flex flex-wrap items-center justify-between gap-3 animate-fade-in-down border-white/10">
+                <div className="flex items-center gap-2 md:gap-4 order-1">
+                    <button className="btn btn-secondary btn-sm px-3 md:px-5" onClick={() => dispatch(navigateTo('landing'))}>
                         ← Exit
                     </button>
-                    <span className="text-sm font-bold text-white/60 tracking-widest uppercase px-3 py-1 bg-white/5 rounded-full">
+                    <span className="text-[10px] md:text-sm font-bold text-white/60 tracking-widest uppercase px-2 md:px-3 py-1 bg-white/5 rounded-full">
                         🎮 {gameCode}
                     </span>
                 </div>
-                <div className="bg-linear-to-r from-red-700 to-red-600 px-6 py-1.5 rounded-full shadow-lg shadow-red-600/20">
-                    <span className="text-sm font-black tracking-tight uppercase">
+                <div className="bg-linear-to-r from-red-700 to-red-600 px-4 md:px-6 py-1 md:py-1.5 rounded-full shadow-lg shadow-red-600/20 order-3 sm:order-2 w-full sm:w-auto text-center">
+                    <span className="text-[10px] md:text-sm font-black tracking-tight uppercase">
                         Round {game?.currentRound || 1} / {game?.totalRounds || 10}
                     </span>
                 </div>
-                <button className="btn btn-secondary btn-sm" onClick={() => dispatch(navigateTo('leaderboard'))}>
-                    🏆 Leaderboard
+                <button className="btn btn-secondary btn-sm px-3 md:px-5 order-2 sm:order-3" onClick={() => dispatch(navigateTo('leaderboard'))}>
+                    🏆 Standings
                 </button>
             </nav>
 
@@ -148,16 +148,16 @@ export default function GameBoard() {
                 <main className="flex flex-col items-center gap-8">
                     {/* Current Player Banner */}
                     {currentPlayer && (
-                        <div className="w-full glass-red p-6 rounded-3xl flex items-center gap-6 animate-fade-in-up border-red-600/20 shadow-xl shadow-red-600/5">
-                            <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl font-black text-white bg-linear-to-br from-red-600 to-red-800 shadow-[0_0_20px_rgba(220,38,38,0.5)] flex-shrink-0 animate-float">
+                        <div className="w-full glass-red p-4 md:p-6 rounded-3xl flex flex-col sm:flex-row items-center gap-4 md:gap-6 animate-fade-in-up border-red-600/20 shadow-xl shadow-red-600/5">
+                            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xl md:text-3xl font-black text-white bg-linear-to-br from-red-600 to-red-800 shadow-[0_0_20px_rgba(220,38,38,0.5)] flex-shrink-0 animate-float">
                                 {currentPlayer.name?.charAt(0)?.toUpperCase()}
                             </div>
-                            <div className="flex-1">
-                                <h2 className="text-2xl font-black uppercase tracking-tight">{currentPlayer.name}</h2>
-                                <div className="flex flex-wrap gap-x-6 gap-y-2 mt-2">
-                                    <span className="text-sm font-bold text-green">💰 {currentPlayer.cashBalance}</span>
-                                    <span className="text-sm font-bold text-red-400">🏦 {currentPlayer.loanBalance}</span>
-                                    <span className="text-sm font-bold text-gold">📊 {currentPlayer.netWorth}</span>
+                            <div className="flex-1 text-center sm:text-left">
+                                <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight">{currentPlayer.name}</h2>
+                                <div className="flex flex-wrap justify-center sm:justify-start gap-x-4 md:gap-x-6 gap-y-1 md:gap-y-2 mt-1 md:mt-2">
+                                    <span className="text-xs md:text-sm font-bold text-green">💰 {currentPlayer.cashBalance}</span>
+                                    <span className="text-xs md:text-sm font-bold text-red-400">🏦 {currentPlayer.loanBalance}</span>
+                                    <span className="text-xs md:text-sm font-bold text-gold">📊 {currentPlayer.netWorth}</span>
                                 </div>
                             </div>
                         </div>
@@ -235,10 +235,10 @@ export default function GameBoard() {
                     onClick={() => setShowResult(false)}
                 >
                     <div
-                        className="w-full max-w-lg glass-strong p-10 rounded-[40px] flex flex-col items-center gap-8 animate-scale-in"
+                        className="w-full max-w-lg glass-strong p-6 md:p-10 rounded-[30px] md:rounded-[40px] flex flex-col items-center gap-4 md:gap-8 animate-scale-in overflow-y-auto max-h-[90vh]"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <h2 className="text-4xl font-black uppercase tracking-tight text-gradient text-center">
+                        <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-gradient text-center">
                             Round {lastRoundResult.roundNumber} Result
                         </h2>
 

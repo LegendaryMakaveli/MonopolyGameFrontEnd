@@ -30,8 +30,8 @@ export default function LandingPage() {
     const [forceEndGame] = useForceEndGameMutation();
     const [deletePlayer] = useDeletePlayerMutation();
 
-    const [mode, setMode] = useState('landing'); 
-    const [adminTab, setAdminTab] = useState('games'); 
+    const [mode, setMode] = useState('landing');
+    const [adminTab, setAdminTab] = useState('games');
     const [gameJoinCode, setGameJoinCode] = useState('');
     const [playerName, setPlayerName] = useState('');
     const [savedGame, setSavedGame] = useState(null);
@@ -171,17 +171,17 @@ export default function LandingPage() {
                 ))}
             </div>
 
-            <header className="text-center mb-16 animate-fade-in-down">
-                <div className="text-6xl mb-6 drop-shadow-[0_0_15px_rgba(220,38,38,0.5)] animate-float">🎲</div>
-                <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-gradient mb-2 drop-shadow-2xl">
+            <header className="text-center mb-10 md:mb-16 animate-fade-in-down">
+                <div className="text-4xl md:text-6xl mb-4 md:mb-6 drop-shadow-[0_0_15px_rgba(220,38,38,0.5)] animate-float">🎲</div>
+                <h1 className="text-4xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter text-gradient mb-2 drop-shadow-2xl px-4">
                     MONOPOLY
                 </h1>
-                <p className="text-xl md:text-2xl font-light uppercase tracking-[0.3em] text-white/60 mb-8">
+                <p className="text-sm md:text-2xl font-light uppercase tracking-[0.2em] md:tracking-[0.3em] text-white/60 mb-8 px-4">
                     The Game of Life
                 </p>
             </header>
 
-          
+
             {savedGame && mode === 'landing' && (
                 <div className="w-full max-w-lg mb-12 animate-bounce-subtle">
                     <button
@@ -211,16 +211,16 @@ export default function LandingPage() {
             <main className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
                 {mode === 'landing' ? (
                     <>
-                        <button className="group glass-red p-10 rounded-3xl text-center transition-all duration-500 animate-fade-in-up" onClick={handleCreate}>
-                            <div className="text-4xl mb-6 bg-red-600/20 w-16 h-16 flex items-center justify-center rounded-2xl mx-auto group-hover:scale-110">🏠</div>
-                            <h3 className="text-2xl font-black uppercase mb-2">Create New</h3>
-                            <p className="text-sm text-white/40">Start a fresh session</p>
+                        <button className="group glass-red p-6 md:p-10 rounded-3xl text-center transition-all duration-500 animate-fade-in-up" onClick={handleCreate}>
+                            <div className="text-3xl md:text-4xl mb-4 md:mb-6 bg-red-600/20 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-2xl mx-auto group-hover:scale-110">🏠</div>
+                            <h3 className="text-xl md:text-2xl font-black uppercase mb-2">Create New</h3>
+                            <p className="text-xs md:text-sm text-white/40">Start a fresh session</p>
                         </button>
 
-                        <button className="group glass p-10 rounded-3xl text-center transition-all duration-500 animate-fade-in-up" onClick={() => setMode('join')}>
-                            <div className="text-4xl mb-6 bg-white/5 w-16 h-16 flex items-center justify-center rounded-2xl mx-auto group-hover:scale-110">🤝</div>
-                            <h3 className="text-2xl font-black uppercase mb-2">Join Others</h3>
-                            <p className="text-sm text-white/40">Connect to a live game</p>
+                        <button className="group glass p-6 md:p-10 rounded-3xl text-center transition-all duration-500 animate-fade-in-up" onClick={() => setMode('join')}>
+                            <div className="text-3xl md:text-4xl mb-4 md:mb-6 bg-white/5 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-2xl mx-auto group-hover:scale-110">🤝</div>
+                            <h3 className="text-xl md:text-2xl font-black uppercase mb-2">Join Others</h3>
+                            <p className="text-xs md:text-sm text-white/40">Connect to a live game</p>
                         </button>
                     </>
                 ) : mode === 'join' ? (
@@ -251,7 +251,7 @@ export default function LandingPage() {
                             </form>
                         ) : (
                             <div className="flex flex-col gap-8">
-                            
+
                                 <div className="flex gap-2 border-b border-white/5 pb-4">
                                     <button
                                         className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${adminTab === 'games' ? 'bg-red-600 text-white shadow-lg' : 'bg-white/5 text-white/40 hover:bg-white/10'}`}

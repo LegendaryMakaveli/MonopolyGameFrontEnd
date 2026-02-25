@@ -193,16 +193,16 @@ export default function LobbyPage() {
                 </div>
             )}
 
-            <header className="text-center mb-12 animate-fade-in-up">
-                <h1 className="text-5xl font-black uppercase tracking-tighter text-gradient mb-2">Game Lobby</h1>
-                <p className="text-white/60 font-medium tracking-wide uppercase text-sm">Session {gameCode}</p>
+            <header className="text-center mb-8 md:mb-12 animate-fade-in-up">
+                <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-gradient mb-2">Game Lobby</h1>
+                <p className="text-white/60 font-medium tracking-wide uppercase text-xs">Session {gameCode}</p>
             </header>
 
-            <div className="glass-red p-10 rounded-3xl text-center mb-12 border-red-600/20 animate-scale-in">
-                <div className="flex items-center justify-center gap-6 mb-4 cursor-pointer" onClick={handleCopy}>
-                    <span className="text-6xl md:text-8xl font-black tracking-[0.2em] text-gradient">{gameCode}</span>
+            <div className="glass-red p-6 md:p-10 rounded-3xl text-center mb-8 md:mb-12 border-red-600/20 animate-scale-in">
+                <div className="flex items-center justify-center gap-4 md:gap-6 mb-4 cursor-pointer" onClick={handleCopy}>
+                    <span className="text-4xl sm:text-6xl md:text-8xl font-black tracking-[0.1em] md:tracking-[0.2em] text-gradient">{gameCode}</span>
                 </div>
-                <p className="text-xs font-bold text-white/30 uppercase tracking-widest">{copied ? '✅ Code Copied' : 'Click code to copy'}</p>
+                <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest">{copied ? '✅ Code Copied' : 'Click code to copy'}</p>
             </div>
 
             {!hasJoined && (

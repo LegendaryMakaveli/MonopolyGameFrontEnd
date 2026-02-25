@@ -41,21 +41,21 @@ export default function LeaderboardPage() {
                 </button>
             </div>
 
-            <header className="text-center mb-16 animate-fade-in-up">
-                <h1 className="text-6xl font-black uppercase tracking-tighter text-gradient mb-2">Leaderboard</h1>
-                <p className="text-white/60 font-medium tracking-wide uppercase text-sm">Wealth rankings of the elite</p>
+            <header className="text-center mb-10 md:mb-16 animate-fade-in-up">
+                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-gradient mb-2">Leaderboard</h1>
+                <p className="text-xs md:text-sm text-white/60 font-medium tracking-wide uppercase">Wealth rankings of the elite</p>
             </header>
 
             {/* Round Selector */}
-            <div className="glass p-6 rounded-3xl flex items-center justify-center gap-10 mb-16 border-white/10 animate-scale-in self-center min-w-[320px]">
-                <button className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 hover:bg-white/10 disabled:opacity-20 transition-all font-black" onClick={() => handleRoundChange(round - 1)} disabled={round <= 1}>
+            <div className="glass p-4 md:p-6 rounded-3xl flex items-center justify-center gap-6 md:gap-10 mb-10 md:mb-16 border-white/10 animate-scale-in self-center min-w-[280px] md:min-w-[320px]">
+                <button className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl bg-white/5 hover:bg-white/10 disabled:opacity-20 transition-all font-black text-sm md:text-base" onClick={() => handleRoundChange(round - 1)} disabled={round <= 1}>
                     ⟨
                 </button>
                 <div className="text-center">
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 block mb-1">Round</span>
-                    <span className="text-5xl font-black text-gradient">{round}</span>
+                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-white/40 block mb-0.5 md:mb-1">Round</span>
+                    <span className="text-3xl md:text-5xl font-black text-gradient">{round}</span>
                 </div>
-                <button className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 hover:bg-white/10 transition-all font-black" onClick={() => handleRoundChange(round + 1)}>
+                <button className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl bg-white/5 hover:bg-white/10 transition-all font-black text-sm md:text-base" onClick={() => handleRoundChange(round + 1)}>
                     ⟩
                 </button>
             </div>
@@ -119,21 +119,21 @@ export default function LeaderboardPage() {
                         </thead>
                         <tbody>
                             {standings.map((player, i) => (
-                                <tr key={player.playerId} className="group hover:bg-white/5 transition-colors border-t border-white/5">
-                                    <td className="p-6">
-                                        <span className="text-xl font-black tracking-tighter opacity-80 italic group-hover:scale-110 inline-block transition-transform">
+                                <tr key={player.playerId} className="group hover:bg-white/5 transition-colors border-t border-white/5 text-[10px] sm:text-xs">
+                                    <td className="p-3 sm:p-6">
+                                        <span className="text-sm sm:text-xl font-black tracking-tighter opacity-80 italic group-hover:scale-110 inline-block transition-transform">
                                             {i < 3 ? RANK_EMOJIS[i] : `#${i + 1}`}
                                         </span>
                                     </td>
-                                    <td className="p-6 font-bold uppercase tracking-tight flex items-center gap-4 text-white/90">
-                                        <div className="w-8 h-8 rounded-full bg-linear-to-br from-red-600/40 to-red-800/40 flex items-center justify-center text-[10px] border border-white/10 group-hover:scale-110 group-hover:bg-red-600 transition-all">
+                                    <td className="p-3 sm:p-6 font-bold uppercase tracking-tight flex items-center gap-2 sm:gap-4 text-white/90">
+                                        <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-linear-to-br from-red-600/40 to-red-800/40 flex items-center justify-center text-[8px] sm:text-[10px] border border-white/10 group-hover:scale-110 group-hover:bg-red-600 transition-all">
                                             {player.playerName?.charAt(0).toUpperCase()}
                                         </div>
-                                        {player.playerName}
+                                        <span className="truncate max-w-[80px] sm:max-w-none">{player.playerName}</span>
                                     </td>
-                                    <td className="p-6 font-black text-gold">₦{((player.netWorthKobo || 0) / 100).toLocaleString()}</td>
-                                    <td className="p-6 font-bold text-green/70">₦{((player.cashBalanceKobo || 0) / 100).toLocaleString()}</td>
-                                    <td className="p-6 font-bold text-red-500/70 text-right italic">₦{((player.loanBalanceKobo || 0) / 100).toLocaleString()}</td>
+                                    <td className="p-3 sm:p-6 font-black text-gold">₦{((player.netWorthKobo || 0) / 100).toLocaleString()}</td>
+                                    <td className="p-3 sm:p-6 font-bold text-green/70 tabular-nums">₦{((player.cashBalanceKobo || 0) / 100).toLocaleString()}</td>
+                                    <td className="p-3 sm:p-6 font-bold text-red-500/70 text-right italic tabular-nums">₦{((player.loanBalanceKobo || 0) / 100).toLocaleString()}</td>
                                 </tr>
                             ))}
                         </tbody>
