@@ -30,13 +30,12 @@ export default function LandingPage() {
     const [forceEndGame] = useForceEndGameMutation();
     const [deletePlayer] = useDeletePlayerMutation();
 
-    const [mode, setMode] = useState('landing'); // 'landing' | 'join' | 'admin'
-    const [adminTab, setAdminTab] = useState('games'); // 'games' | 'players'
+    const [mode, setMode] = useState('landing'); 
+    const [adminTab, setAdminTab] = useState('games'); 
     const [gameJoinCode, setGameJoinCode] = useState('');
     const [playerName, setPlayerName] = useState('');
     const [savedGame, setSavedGame] = useState(null);
 
-    // Admin state
     const [adminPasswordInput, setAdminPasswordInput] = useState('');
     const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
     const [adminError, setAdminError] = useState('');
@@ -182,7 +181,7 @@ export default function LandingPage() {
                 </p>
             </header>
 
-            {/* ── HIGH PRIORITY RESUME BUTTON ── */}
+          
             {savedGame && mode === 'landing' && (
                 <div className="w-full max-w-lg mb-12 animate-bounce-subtle">
                     <button
@@ -252,7 +251,7 @@ export default function LandingPage() {
                             </form>
                         ) : (
                             <div className="flex flex-col gap-8">
-                                {/* Tabs */}
+                            
                                 <div className="flex gap-2 border-b border-white/5 pb-4">
                                     <button
                                         className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${adminTab === 'games' ? 'bg-red-600 text-white shadow-lg' : 'bg-white/5 text-white/40 hover:bg-white/10'}`}
