@@ -8,8 +8,8 @@ export const useGameWebSocket = (gameCode, onEvent) => {
     useEffect(() => {
         if (!gameCode) return;
 
-    
-        const socket = new SockJS('/ws');
+        const WS_URL = import.meta.env.VITE_WS_URL || '/ws';
+        const socket = new SockJS(WS_URL);
         const stompClient = Stomp.over(socket);
 
         stompClient.debug = () => { };

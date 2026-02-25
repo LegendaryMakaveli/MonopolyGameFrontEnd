@@ -5,9 +5,11 @@ const unwrapData = (response) => {
     return response.data !== undefined ? response.data : response;
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/';
+
 export const monopolyApi = createApi({
     reducerPath: 'monopolyApi',
-    baseQuery: fetchBaseQuery({ baseUrl: '/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
     tagTypes: ['Game', 'Player', 'Leaderboard', 'Admin'],
     endpoints: (builder) => ({
 
