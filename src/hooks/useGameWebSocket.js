@@ -46,7 +46,7 @@ export const useGameWebSocket = (gameCode, onEvent) => {
 
         return () => {
             if (stompClientRef.current) {
-                console.log('Disconnecting WebSocket...');
+                console.log(`Disconnecting WebSocket for game: ${gameCode}`);
                 if (stompClientRef.current.subscription) {
                     stompClientRef.current.subscription.unsubscribe();
                 }
