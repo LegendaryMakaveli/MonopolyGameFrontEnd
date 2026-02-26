@@ -71,7 +71,7 @@ export default function LeaderboardPage() {
                         <span className="text-2xl">🥈</span>
                         <div className="text-center">
                             <h4 className="font-black uppercase tracking-tight text-white mb-1 line-clamp-1">{standings[1].playerName}</h4>
-                            <span className="text-xs font-bold text-white/50">₦{((standings[1].netWorthKobo || 0) / 100).toLocaleString()}</span>
+                            <span className="text-xs font-bold text-white/50">₦{((standings[1].netWorth || 0)).toLocaleString()}</span>
                         </div>
                         <div className="w-full bg-linear-to-t from-red-600/20 to-red-600/5 border-x border-t border-red-600/30 rounded-t-2xl animate-[podiumRise_0.8s_ease_forwards]" style={{ height: '80px' }} />
                     </div>
@@ -84,7 +84,7 @@ export default function LeaderboardPage() {
                         </div>
                         <div className="text-center">
                             <h4 className="text-xl font-black uppercase tracking-tight text-white mb-1">{standings[0].playerName}</h4>
-                            <span className="text-sm font-black text-gold">₦{((standings[0].netWorthKobo || 0) / 100).toLocaleString()}</span>
+                            <span className="text-sm font-black text-gold">₦{((standings[0].netWorth || 0)).toLocaleString()}</span>
                         </div>
                         <div className="w-full bg-linear-to-t from-gold/30 to-gold/5 border-x border-t border-gold/40 rounded-t-3xl animate-[podiumRise_1s_ease_forwards]" style={{ height: '140px' }} />
                     </div>
@@ -97,7 +97,7 @@ export default function LeaderboardPage() {
                         <span className="text-2xl">🥉</span>
                         <div className="text-center">
                             <h4 className="font-black uppercase tracking-tight text-white mb-1 line-clamp-1">{standings[2].playerName}</h4>
-                            <span className="text-xs font-bold text-white/50">₦{((standings[2].netWorthKobo || 0) / 100).toLocaleString()}</span>
+                            <span className="text-xs font-bold text-white/50">₦{((standings[2].netWorth || 0)).toLocaleString()}</span>
                         </div>
                         <div className="w-full bg-linear-to-t from-red-600/20 to-red-600/5 border-x border-t border-red-600/30 rounded-t-2xl animate-[podiumRise_0.6s_ease_forwards]" style={{ height: '50px' }} />
                     </div>
@@ -131,9 +131,9 @@ export default function LeaderboardPage() {
                                         </div>
                                         <span className="truncate max-w-[80px] sm:max-w-none">{player.playerName}</span>
                                     </td>
-                                    <td className="p-3 sm:p-6 font-black text-gold">₦{((player.netWorthKobo || 0) / 100).toLocaleString()}</td>
-                                    <td className="p-3 sm:p-6 font-bold text-green/70 tabular-nums">₦{((player.cashBalanceKobo || 0) / 100).toLocaleString()}</td>
-                                    <td className="p-3 sm:p-6 font-bold text-red-500/70 text-right italic tabular-nums">₦{((player.loanBalanceKobo || 0) / 100).toLocaleString()}</td>
+                                    <td className="p-3 sm:p-6 font-black text-gold">₦{((player.netWorth || 0)).toLocaleString()}</td>
+                                    <td className="p-3 sm:p-6 font-bold text-green/70 tabular-nums">₦{((player.cashBalance || 0)).toLocaleString()}</td>
+                                    <td className="p-3 sm:p-6 font-bold text-red-500/70 text-right italic tabular-nums">₦{((player.loanBalance || 0)).toLocaleString()}</td>
                                 </tr>
                             ))}
                         </tbody>

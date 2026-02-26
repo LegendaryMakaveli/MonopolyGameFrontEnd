@@ -259,23 +259,23 @@ export default function GameBoard() {
 
                         <div className="w-full flex flex-col gap-2 bg-black/40 p-6 rounded-3xl">
                             {[
-                                { l: '💼 Salary', v: lastRoundResult.salaryReceivedKobo, g: true },
-                                { l: '🏠 Housing', v: -lastRoundResult.housingCostKobo, r: true },
-                                { l: '🛒 Survival', v: -lastRoundResult.survivalCostKobo, r: true },
-                                { l: '🏦 Loan Pay', v: -lastRoundResult.loanPaymentKobo, r: true },
-                                { l: '🎲 Event', v: lastRoundResult.eventAmountKobo, r: lastRoundResult.eventAmountKobo < 0, g: lastRoundResult.eventAmountKobo > 0 },
+                                { l: '💼 Salary', v: lastRoundResult.salaryReceived, g: true },
+                                { l: '🏠 Housing', v: -lastRoundResult.housingCost, r: true },
+                                { l: '🛒 Survival', v: -lastRoundResult.survivalCost, r: true },
+                                { l: '🏦 Loan Pay', v: -lastRoundResult.loanPayment, r: true },
+                                { l: '🎲 Event', v: lastRoundResult.eventAmount, r: lastRoundResult.eventAmount < 0, g: lastRoundResult.eventAmount > 0 },
                             ].map((item, i) => (
                                 <div key={i} className="flex justify-between text-sm font-semibold">
                                     <span className="text-white/40">{item.l}</span>
                                     <span className={item.g ? 'text-green' : item.r ? 'text-red-400' : ''}>
-                                        {item.v < 0 ? '-' : '+'} ₦{(Math.abs(item.v) / 100).toLocaleString()}
+                                        {item.v < 0 ? '-' : '+'} ₦{(Math.abs(item.v)).toLocaleString()}
                                     </span>
                                 </div>
                             ))}
                             <hr className="my-2 border-white/5" />
                             <div className="flex justify-between text-lg font-black uppercase tracking-tight italic">
                                 <span>💰 Balance</span>
-                                <span>₦{((lastRoundResult.cashBalanceEndKobo || 0) / 100).toLocaleString()}</span>
+                                <span>₦{((lastRoundResult.cashBalanceEnd || 0)).toLocaleString()}</span>
                             </div>
                         </div>
 
