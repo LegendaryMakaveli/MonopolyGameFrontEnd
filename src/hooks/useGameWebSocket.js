@@ -4,6 +4,12 @@ import Stomp from 'stompjs';
 
 export const useGameWebSocket = (gameCode, onEvent) => {
     const stompClientRef = useRef(null);
+    const onEventRef = useRef(onEvent);
+
+    // Keep onEventRef updated with the latest callback
+    useEffect(() => {
+        onEventRef.current = onEvent;
+    }, [onEvent]);
 
     useEffect(() => {
         if (!gameCode) return;
@@ -21,7 +27,9 @@ export const useGameWebSocket = (gameCode, onEvent) => {
                 if (message.body) {
                     try {
                         const event = JSON.parse(message.body);
-                        onEvent(event);
+                        if (onEventRef.current) {
+                            onEventRef.current(event);
+                        }
                     } catch (error) {
                         console.error('Error parsing WebSocket message:', error);
                     }
@@ -39,11 +47,16 @@ export const useGameWebSocket = (gameCode, onEvent) => {
         return () => {
             if (stompClientRef.current) {
                 console.log('Disconnecting WebSocket...');
-                stompClientRef.current.subscription.unsubscribe();
-                stompClientRef.current.client.disconnect();
+                if (stompClientRef.current.subscription) {
+                    stompClientRef.current.subscription.unsubscribe();
+                }
+                if (stompClientRef.current.client) {
+                    stompClientRef.current.client.disconnect();
+                }
+                stompClientRef.current = null;
             }
         };
-    }, [gameCode, onEvent]);
+    }, [gameCode]);
 
     return stompClientRef.current;
 };
